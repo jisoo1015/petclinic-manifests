@@ -1,0 +1,19 @@
+# WAS Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: was-service
+  namespace: petclinic
+  labels:
+    app: petclinic
+    tier: was
+spec:
+  type: ClusterIP
+  selector:
+    app: petclinic
+    tier: was
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP

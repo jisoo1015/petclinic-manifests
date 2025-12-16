@@ -1,0 +1,19 @@
+# WEB Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  namespace: petclinic
+  labels:
+    app: petclinic
+    tier: web
+spec:
+  type: ClusterIP
+  selector:
+    app: petclinic
+    tier: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
