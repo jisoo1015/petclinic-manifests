@@ -1,7 +1,7 @@
-# WAS Deployment (Spring Boot PetClinic)
+# WAS Rollout (Spring Boot PetClinic)
 # 이미지 URL은 ECR 푸시 후 수정 필요
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: was
   namespace: petclinic
@@ -14,6 +14,21 @@ spec:
     matchLabels:
       app: petclinic
       tier: was
+  strategy:
+    canary:
+      maxSurge: 1
+      maxUnavailable: 0
+      steps:
+        - setWeight: 20
+        - pause:
+            duration: 1m
+        - setWeight: 50
+        - pause:
+            duration: 1m
+        - setWeight: 80
+        - pause:
+            duration: 30s
+        - setWeight: 100
   template:
     metadata:
       labels:
