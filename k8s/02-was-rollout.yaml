@@ -38,7 +38,7 @@ spec:
       containers:
         - name: was
           # TODO: ECR URL로 변경 (terraform output ecr_was_url 참고)
-          image: 723165663216.dkr.ecr.ap-northeast-2.amazonaws.com/petclinic-3tier-dev-was:build-10
+          image: 723165663216.dkr.ecr.ap-northeast-2.amazonaws.com/petclinic-3tier-dev-was:build-<NEW>
           ports:
             - containerPort: 8080
               name: http
@@ -63,3 +63,7 @@ spec:
             initialDelaySeconds: 90
             periodSeconds: 30
             timeoutSeconds: 5
+
+ # 최대 Pod 수 제어
+      maxSurge: 1
+      maxUnavailable: 0
