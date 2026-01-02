@@ -38,7 +38,7 @@ spec:
       containers:
         - name: web
           # TODO: ECR URL로 변경 (terraform output ecr_web_url 참고)
-          image: 723165663216.dkr.ecr.ap-northeast-2.amazonaws.com/petclinic-3tier-dev-web:build-13
+          image: 723165663216.dkr.ecr.ap-northeast-2.amazonaws.com/petclinic-3tier-dev-web:build-14
           ports:
             - containerPort: 80
               name: http
